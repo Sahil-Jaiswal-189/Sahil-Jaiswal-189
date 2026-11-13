@@ -4,13 +4,13 @@
 
 ## 🧑‍💻 About Me
 
-I like understanding how software works, especially the fundamentals behind the tools I use. There’s always more to learn, and I enjoy getting my hands dirty with a project to make sense of it.
+🎓 I’m a **Computer Science graduate** with a strong foundation in **problem solving, DBMS, and operating systems**. I like understanding what goes on behind the tools I use and putting those fundamentals to work when solving a problem.
 
-🛠️ I’ve worked with the **MERN stack since college**, built **Python projects**, and spent time learning **ML and deep learning**. I’d like to use what I know to make useful contributions and keep learning from the people I work with.
+🛠️ I started building with the **MERN stack in college**, have worked on **Python projects**, and have learnt about **ML and deep learning**. I enjoy picking up new skills through hands-on work and finding ways to contribute to projects that others can use.
 
 ## 💼 Work Experience
 
-I’ve been working as a **backend engineer for two years**, building applications with **Java and Spring Boot** and working with **Azure**.
+I’ve been working as a **backend engineer for two years**, building applications with **Java and Spring Boot** and working with **Azure**. I learnt Spring Boot on the job, getting comfortable with it by building features and solving problems in the applications I work on.
 
 ## 🛠️ Skills & Tools
 
