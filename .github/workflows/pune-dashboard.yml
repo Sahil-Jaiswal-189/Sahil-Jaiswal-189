@@ -14,8 +14,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   update:
-    # Use a separate runner network: Open-Meteo timed out from the Ubuntu runner.
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

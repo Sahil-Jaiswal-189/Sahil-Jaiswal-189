@@ -1,5 +1,7 @@
 import importlib.util
 import json
+from datetime import datetime
+from zoneinfo import ZoneInfo
 import tempfile
 import unittest
 from pathlib import Path
@@ -57,6 +59,19 @@ class WeatherRecoveryTests(unittest.TestCase):
         for bad in (None, float('nan'), '28'):
             with self.assertRaises(ValueError):
                 widget.validate(dict(self.current, temperature_2m=bad))
+
+    def test_backup_provider_and_day_night(self):
+        data = {'current_condition': [{'temp_C': '30', 'weatherDesc': [{'value': 'Partly cloudy'}]}],
+                'weather': [{'date': '2026-11-13', 'astronomy': [{'sunrise': '06:40 AM', 'sunset': '05:58 PM'}]}]}
+        current = widget.secondary_weather(data, datetime(2026, 11, 13, 16, tzinfo=ZoneInfo('Asia/Kolkata')))
+        self.assertEqual(current['source'], 'wttr.in')
+        self.assertEqual(current['is_day'], 1)
+        self.assertEqual(current['kind'], 'partial')
+        night = widget.secondary_weather(data, datetime(2026, 11, 13, 20, tzinfo=ZoneInfo('Asia/Kolkata')))
+        self.assertEqual(night['is_day'], 0)
+        with patch.object(widget, 'fetch_json', side_effect=[RuntimeError('connection timeout'), data]), patch.object(widget, 'secondary_weather', return_value=current) as secondary:
+            self.assertEqual(widget.fetch_weather(), current)
+            secondary.assert_called_once()
 
 
 if __name__ == '__main__':

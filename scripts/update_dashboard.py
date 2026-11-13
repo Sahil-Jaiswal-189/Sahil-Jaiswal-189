@@ -106,7 +106,9 @@ def scene(day, kind):
 def render(now, current=None, stale=False):
     available = current is not None
     day = bool(current['is_day']) if available else None
-    label, kind = describe(current['weather_code']) if available else ('Weather unavailable', 'unknown')
+    label, kind = ((current['condition'], current['kind']) if available and 'condition' in current
+                   else describe(current['weather_code']) if available else ('Weather unavailable', 'unknown'))
+    source = current.get('source', 'Open-Meteo') if available else 'Open-Meteo'
     accent = '#edc49c' if day else '#c3b9ed'
     period = ('Daytime' if day else 'Nighttime') if available else 'No weather data'
     temp = current['temperature_2m'] if available else None
@@ -129,7 +131,7 @@ def render(now, current=None, stale=False):
 <text x="41" y="182" font-size="11" fill="{accent}">{period} · {band}</text>
 <path d="M26 198 H257" stroke="#383b4b"/>
 <text x="26" y="217" font-size="10" fill="#c1bfce">{now.strftime('%a, %d %b %Y')}</text>
-<text x="26" y="232" font-size="8" fill="#9b9bad">{'Refresh delayed · Open-Meteo' if stale else 'Hourly snapshot · Open-Meteo'}</text>
+<text x="26" y="232" font-size="8" fill="#9b9bad">{'Refresh delayed' if stale else 'Hourly snapshot'} · {escape(source)}</text>
 </g></svg>'''
 
 
@@ -144,29 +146,60 @@ def validate(current):
     return current
 
 
-def fetch_weather():
+def fetch_json(url):
     # IPv4 avoids unreachable IPv6 routes on some hosted runners.
     # curl retries transient HTTP failures and connection errors.
     result = subprocess.run(
         ['curl', '--ipv4', '--fail', '--silent', '--show-error',
          '--connect-timeout', '10', '--max-time', '25',
-         '--retry', '2', '--retry-delay', '2', '--retry-all-errors', URL],
+         '--retry', '2', '--retry-delay', '2', '--retry-all-errors', url],
         capture_output=True, text=True, timeout=90,
     )
     if result.returncode:
         raise RuntimeError(result.stderr.strip() or 'Weather request failed')
-    return validate(json.loads(result.stdout)['current'])
+    return json.loads(result.stdout)
+
+
+def secondary_weather(data, now):
+    reading = data['current_condition'][0]
+    today = next(day for day in data['weather'] if day['date'] == now.date().isoformat())
+    astronomy = today['astronomy'][0]
+    sunrise = datetime.strptime(astronomy['sunrise'], '%I:%M %p').time()
+    sunset = datetime.strptime(astronomy['sunset'], '%I:%M %p').time()
+    condition = reading['weatherDesc'][0]['value'].strip()
+    text = condition.lower()
+    kind = ('storm' if 'thunder' in text else 'snow' if any(w in text for w in ('snow', 'ice', 'sleet', 'blizzard'))
+            else 'rain' if any(w in text for w in ('rain', 'drizzle', 'shower'))
+            else 'fog' if any(w in text for w in ('fog', 'mist'))
+            else 'partial' if 'partly' in text else 'cloud' if any(w in text for w in ('cloud', 'overcast'))
+            else 'clear' if any(w in text for w in ('sunny', 'clear')) else 'unknown')
+    return validate({'temperature_2m': float(reading['temp_C']), 'weather_code': -1,
+                     'is_day': int(sunrise <= now.time() < sunset),
+                     'time': now.isoformat(), 'condition': condition, 'kind': kind,
+                     'source': 'wttr.in'})
+
+
+def fetch_weather():
+    try:
+        current = validate(fetch_json(URL)['current'])
+        current['source'] = 'Open-Meteo'
+        return current
+    except Exception as error:
+        print('::warning::Open-Meteo unreachable; trying backup:', str(error))
+        return secondary_weather(fetch_json('https://wttr.in/Pune?format=j1'),
+                                 datetime.now(ZoneInfo('Asia/Kolkata')))
 
 
 def main():
     stale = False
     try:
         current = fetch_weather()
-        observed = datetime.fromisoformat(current['time']).replace(tzinfo=ZoneInfo('Asia/Kolkata'))
+        observed = datetime.fromisoformat(current['time'])
+        observed = observed.replace(tzinfo=ZoneInfo('Asia/Kolkata')) if observed.tzinfo is None else observed.astimezone(ZoneInfo('Asia/Kolkata'))
         snapshot = {'observed_at': observed.isoformat(), 'current': current}
         CACHE.parent.mkdir(exist_ok=True)
         CACHE.write_text(json.dumps(snapshot, indent=2) + '\n', encoding='utf-8')
-        print('Fetched Pune weather:', current['temperature_2m'], 'C')
+        print('Fetched Pune weather:', current['temperature_2m'], 'C via', current.get('source', 'Open-Meteo'))
     except Exception as error:
         print('::warning::Weather refresh failed:', str(error))
         # A failed refresh must never destroy a valid card or invent a reading.
