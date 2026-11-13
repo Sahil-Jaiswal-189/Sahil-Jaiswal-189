@@ -1,0 +1,10 @@
+{
+  "observed_at": "2026-11-13T16:30:00+05:30",
+  "current": {
+    "time": "2026-11-13T16:30",
+    "interval": 900,
+    "temperature_2m": 29.1,
+    "weather_code": 3,
+    "is_day": 1
+  }
+}

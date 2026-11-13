@@ -1,12 +1,14 @@
 """Generate a compact Pune weather snapshot for the profile README."""
 import json
+import math
+import subprocess
 from datetime import datetime
 from html import escape
 from pathlib import Path
-from urllib.request import urlopen
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
+CACHE = ROOT / 'assets/pune-weather.json'
 URL = ('https://api.open-meteo.com/v1/forecast?latitude=18.5204&longitude=73.8567'
        '&current=temperature_2m,weather_code,is_day'
        '&timezone=Asia%2FKolkata')
@@ -101,7 +103,7 @@ def scene(day, kind):
     </g>'''
 
 
-def render(now, current=None):
+def render(now, current=None, stale=False):
     available = current is not None
     day = bool(current['is_day']) if available else None
     label, kind = describe(current['weather_code']) if available else ('Weather unavailable', 'unknown')
@@ -119,7 +121,7 @@ def render(now, current=None):
 <rect x=".5" y=".5" width="559" height="243" rx="22" fill="url(#card)" stroke="#3b3d4d"/>
 {scene(day, kind)}
 <g font-family="Arial,Helvetica,sans-serif">
-<text x="26" y="31" font-size="9" letter-spacing="2.5" fill="{accent}">CURRENT WEATHER</text>
+<text x="26" y="31" font-size="9" letter-spacing="2.5" fill="{accent}">{'LAST KNOWN WEATHER' if stale else 'CURRENT WEATHER'}</text>
 <text x="25" y="62" font-size="23" font-weight="600" fill="#f6eee7">Pune<tspan dx="7" font-size="12" font-weight="400" fill="#a2a4b5">/ India</tspan></text>
 <text x="23" y="130" font-size="68" font-weight="500" letter-spacing="-4" fill="#f6eee7">{temperature}<tspan dx="8" font-size="23" letter-spacing="0" fill="#a5a7b8">C</tspan></text>
 <text x="27" y="157" font-size="15" fill="#dedce5">{escape(label)}</text>
@@ -127,25 +129,58 @@ def render(now, current=None):
 <text x="41" y="182" font-size="11" fill="{accent}">{period} · {band}</text>
 <path d="M26 198 H257" stroke="#383b4b"/>
 <text x="26" y="217" font-size="10" fill="#c1bfce">{now.strftime('%a, %d %b %Y')}</text>
-<text x="26" y="232" font-size="8" fill="#9b9bad">Hourly snapshot · Open-Meteo</text>
+<text x="26" y="232" font-size="8" fill="#9b9bad">{'Refresh delayed · Open-Meteo' if stale else 'Hourly snapshot · Open-Meteo'}</text>
 </g></svg>'''
 
 
 
+def validate(current):
+    for key in ('temperature_2m', 'weather_code', 'is_day'):
+        value = current.get(key)
+        if not isinstance(value, (int, float)) or not math.isfinite(value):
+            raise ValueError('Invalid weather field: ' + key)
+    if current['is_day'] not in (0, 1):
+        raise ValueError('Invalid day/night reading')
+    return current
+
+
+def fetch_weather():
+    # IPv4 avoids unreachable IPv6 routes on some hosted runners.
+    # curl retries transient HTTP failures and connection errors.
+    result = subprocess.run(
+        ['curl', '--ipv4', '--fail', '--silent', '--show-error',
+         '--connect-timeout', '10', '--max-time', '25',
+         '--retry', '2', '--retry-delay', '2', '--retry-all-errors', URL],
+        capture_output=True, text=True, timeout=90,
+    )
+    if result.returncode:
+        raise RuntimeError(result.stderr.strip() or 'Weather request failed')
+    return validate(json.loads(result.stdout)['current'])
+
+
 def main():
-    current = None
+    stale = False
     try:
-        with urlopen(URL, timeout=25) as response:
-            current = json.load(response)['current']
-        for key in ('temperature_2m', 'weather_code', 'is_day'):
-            if current.get(key) is None:
-                raise ValueError('Missing weather field: ' + key)
+        current = fetch_weather()
+        observed = datetime.fromisoformat(current['time']).replace(tzinfo=ZoneInfo('Asia/Kolkata'))
+        snapshot = {'observed_at': observed.isoformat(), 'current': current}
+        CACHE.parent.mkdir(exist_ok=True)
+        CACHE.write_text(json.dumps(snapshot, indent=2) + '\n', encoding='utf-8')
+        print('Fetched Pune weather:', current['temperature_2m'], 'C')
     except Exception as error:
-        print('Weather unavailable:', type(error).__name__)
-        current = None
-    svg = render(datetime.now(ZoneInfo('Asia/Kolkata')), current)
+        print('::warning::Weather refresh failed:', str(error))
+        # A failed refresh must never destroy a valid card or invent a reading.
+        if not CACHE.exists():
+            raise RuntimeError('No saved reading; preserving existing widget') from error
+        snapshot = json.loads(CACHE.read_text(encoding='utf-8'))
+        current = validate(snapshot['current'])
+        observed = datetime.fromisoformat(snapshot['observed_at'])
+        stale = True
+        print('Using saved reading from', observed.isoformat())
+    svg = render(observed, current, stale=stale)
     (ROOT / 'assets').mkdir(exist_ok=True)
-    (ROOT / 'assets/pune-dashboard.svg').write_text('\n'.join(line.rstrip() for line in svg.splitlines()) + '\n', encoding='utf-8')
+    (ROOT / 'assets/pune-dashboard.svg').write_text(
+        '\n'.join(line.rstrip() for line in svg.splitlines()) + '\n', encoding='utf-8')
 
 
 if __name__ == '__main__':
