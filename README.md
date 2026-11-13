@@ -70,11 +70,11 @@ I learnt Spring Boot on the job, getting comfortable with it by building feature
 
 <p align="center">
   <a href="https://www.linkedin.com/in/sahil-jaiswal-470a45207/">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge" alt="Connect with Sahil on LinkedIn" />
+    <img src="https://skillicons.dev/icons?i=linkedin&theme=dark" width="48" height="48" alt="Connect with Sahil on LinkedIn" title="LinkedIn" />
   </a>
   &nbsp;
   <a href="https://dev.to/sahil_jaiswal_6affec34584">
-    <img src="https://img.shields.io/badge/DEV.to-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white" alt="Read Sahil's posts on DEV.to" />
+    <img src="https://skillicons.dev/icons?i=devto&theme=dark" width="48" height="48" alt="Read Sahil's posts on DEV.to" title="DEV.to" />
   </a>
 </p>
 
