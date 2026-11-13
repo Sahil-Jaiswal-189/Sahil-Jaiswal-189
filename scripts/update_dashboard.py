@@ -63,30 +63,32 @@ def render(now, current=None):
         icon += '<path d="M-20 17 H20 M-14 24 H14" stroke="#9cacc7" stroke-width="3" stroke-linecap="round"/>'
     elif kind == 'snow':
         icon += '<g fill="#d8eeff"><circle cx="-12" cy="20" r="2"/><circle cy="25" r="2"/><circle cx="12" cy="20" r="2"/></g>'
-    hour_angle = ((now.hour % 12) + now.minute / 60) * 30
-    minute_angle = now.minute * 6
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="500" height="226" viewBox="0 0 500 226" role="img" aria-label="{escape('Pune weather: ' + temperature + ', ' + label + ', ' + period + '. Time snapshot ' + now.strftime('%I:%M %p IST'))}">
-<rect x=".5" y=".5" width="499" height="225" rx="18" fill="#111827" stroke="#30394c"/>
+    pill_width = 158 if not available else 84
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="480" height="228" viewBox="0 0 480 228" role="img" aria-label="{escape('Pune weather: ' + temperature + ', ' + label + ', ' + period + ', ' + now.strftime('%d %b %Y'))}">
+<defs>
+  <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#192234"/><stop offset="1" stop-color="#101722"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="{accent}" stop-opacity=".14"/><stop offset="1" stop-color="{accent}" stop-opacity="0"/></radialGradient>
+</defs>
+<rect x=".5" y=".5" width="479" height="227" rx="20" fill="url(#card)" stroke="#303b50"/>
 <g font-family="Verdana,Arial,sans-serif">
-<text x="24" y="32" font-size="10" letter-spacing="2" fill="#a3b0c5">CURRENT WEATHER</text>
-<text x="24" y="57" font-size="13" fill="#dbe4f2">Pune, India</text>
-<g transform="translate(48,108) scale(.9)">{icon}</g>
-<text x="85" y="121" font-size="42" font-weight="700" fill="{color}">{temperature}</text>
-<text x="24" y="153" font-size="14" fill="#e1e8f5">{escape(label)}</text>
-<text x="24" y="176" font-size="11" fill="{accent}">{period} · {band}</text>
-<path d="M270 27 V181" stroke="#30394c"/>
-<g transform="translate(377,76)">
-<circle r="34" fill="#1c2639" stroke="#566079"/>
-<path d="M0 -28 V-24 M28 0 H24 M0 28 V24 M-28 0 H-24" stroke="#b4bfd1" stroke-width="2"/>
-<path d="M0 3 V-16" transform="rotate({hour_angle})" stroke="#e4eaf5" stroke-width="3.5" stroke-linecap="round"/>
-<path d="M0 4 V-24" transform="rotate({minute_angle})" stroke="{accent}" stroke-width="2" stroke-linecap="round"/>
-<circle r="3" fill="{accent}"/>
+<text x="26" y="32" font-size="9" letter-spacing="2.4" fill="#99a9c0">CURRENT WEATHER</text>
+<g transform="translate({454-pill_width},19)">
+  <rect width="{pill_width}" height="24" rx="12" fill="{accent}" fill-opacity=".09"/>
+  <circle cx="12" cy="12" r="2.5" fill="{accent}"/>
+  <text x="21" y="16" font-size="9" fill="{accent}">{period}</text>
 </g>
-<text x="377" y="137" text-anchor="middle" font-size="23" font-weight="700" fill="#f0f4fb">{now.strftime('%I:%M %p')}</text>
-<text x="377" y="158" text-anchor="middle" font-size="11" fill="#b0bdd2">{now.strftime('%a, %d %b %Y')}</text>
-<text x="377" y="178" text-anchor="middle" font-size="10" fill="#95a5bd">IST · UTC +05:30</text>
-<path d="M24 192 H476" stroke="#273247"/>
-<text x="24" y="212" font-size="9" fill="#8f9fb7">Snapshot {now.strftime('%H:%M')} IST · Hourly refresh · Weather: Open-Meteo</text>
+<path d="M29 52 a4 4 0 1 0 0 8 a4 4 0 1 0 0 -8 M26 60 l3 4 3-4" fill="none" stroke="#aebcd0" stroke-width="1.2"/>
+<text x="42" y="63" font-size="13" fill="#d8e1ee">Pune, India</text>
+<text x="24" y="128" font-size="54" font-weight="700" letter-spacing="-2" fill="#f3f6fc">{temperature}</text>
+<text x="27" y="156" font-size="14" fill="#d1dcec">{escape(label)}</text>
+<circle cx="30" cy="176" r="3" fill="{color}"/>
+<text x="40" y="180" font-size="10" fill="{color}">{band}</text>
+<circle cx="373" cy="112" r="73" fill="url(#glow)"/>
+<circle cx="373" cy="112" r="48" fill="none" stroke="{accent}" stroke-opacity=".08"/>
+<g transform="translate(373,118) scale(1.65)">{icon}</g>
+<path d="M26 195 H454" stroke="#2b3648"/>
+<text x="26" y="215" font-size="9" fill="#9cacc1">{now.strftime('%a, %d %b %Y')}</text>
+<text x="454" y="215" text-anchor="end" font-size="8" fill="#8999b0">Hourly snapshot · Open-Meteo</text>
 </g></svg>'''
 
 

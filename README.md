@@ -21,7 +21,7 @@ Write a few lines about yourself here—what you enjoy creating, what you're int
 <p align="center">
   <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg" width="48" height="48" alt="Claude" title="Claude" />
   &nbsp;&nbsp;
-  <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/codex.svg" width="48" height="48" alt="Codex" title="Codex" />
+  <img src="assets/codex-light.svg" width="48" height="48" alt="Codex" title="Codex" />
 </p>
 <p align="center"><sub>AI tools: Claude · Codex</sub></p>
 
@@ -75,5 +75,7 @@ Write a few lines about yourself here—what you enjoy creating, what you're int
 ---
 
 <p align="center">
-  <img src="assets/pune-dashboard.svg" width="500" alt="Current weather in Pune, India, with condition icon, temperature, day or night, and an IST date and time snapshot" />
+  <img src="assets/pune-dashboard.svg" width="480" alt="Pune weather: temperature, conditions, day or night, and date; refreshed hourly" />
 </p>
+
+<!-- Codex icon adapted from LobeHub Icons (MIT). See assets/lobehub-LICENSE. -->
