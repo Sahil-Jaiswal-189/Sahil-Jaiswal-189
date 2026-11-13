@@ -1,36 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-label="Pune skyline and local time, date and weather dashboard">
-<defs><linearGradient id="sky" x2="1" y2="1"><stop stop-color="#211743"/><stop offset="1" stop-color="#101e38"/></linearGradient></defs>
-<rect width="960" height="520" rx="24" fill="#0d1224"/>
-<rect x="20" y="20" width="920" height="285" rx="18" fill="url(#sky)"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="184" viewBox="0 0 620 184" role="img" aria-label="Daytime, Pune: 30°C, Cloudy">
+<defs><linearGradient id="heat"><stop stop-color="#84caff"/><stop offset=".5" stop-color="#a5e6bc"/><stop offset="1" stop-color="#ff9f91"/></linearGradient><clipPath id="art"><rect x="12" y="12" width="160" height="160" rx="12"/></clipPath></defs>
+<rect x=".5" y=".5" width="619" height="183" rx="16" fill="#111827" stroke="#30394c"/>
 <g font-family="Verdana,Arial,sans-serif">
-<text x="52" y="67" fill="#c2afff" font-size="12" letter-spacing="4">A LITTLE CORNER OF MY WORLD</text>
-<text x="50" y="132" fill="#ffffff" font-size="58" font-weight="700">PUNE</text>
-<text x="53" y="163" fill="#d4d9ed" font-size="16">Maharashtra, India · Building, learning, contributing.</text>
-<circle cx="826" cy="85" r="34" fill="#ffcda3"/>
-<path d="M20 268 Q160 170 300 260 Q430 184 580 267 Q750 170 940 255 V305 H20Z" fill="#343759"/>
-<!-- Stylized illustration inspired by Shaniwar Wada; not a photograph. -->
-<g fill="#d19685" stroke="#281e35" stroke-width="3">
-<path d="M370 294 V237 H395 V211 H429 V237 H530 V211 H564 V237 H590 V294Z"/>
-<path d="M395 211 L412 195 L429 211 M530 211 L547 195 L564 211" fill="#ffcda3"/>
-<path d="M448 294 V262 Q480 219 512 262 V294Z" fill="#231e36"/>
-<path d="M300 294 V264 H370 V294 M590 294 V264 H665 V294"/>
-</g>
-<g fill="#121a30"><path d="M45 294 V251 H75 V231 H106 V294 M130 294 V242 H169 V294 M690 294 V224 H731 V294 M748 294 V247 H784 V294 M852 294 V229 H893 V294"/></g>
-<text x="53" y="287" fill="#cad3eb" font-size="10">PUNE · ILLUSTRATED SKYLINE</text>
-<g transform="translate(40,330)">
-    <rect width="280" height="130" rx="18" fill="#161d35" stroke="#303a5f"/>
-    <text x="22" y="30" fill="#b6a2ff" font-size="12" letter-spacing="2">LOCAL TIME</text>
-    <text x="22" y="74" fill="#f8fafc" font-size="30" font-weight="700">03:22 PM</text>
-    <text x="22" y="104" fill="#a9b5d3" font-size="13">IST · UTC +05:30 · snapshot</text></g>
-<g transform="translate(340,330)">
-    <rect width="280" height="130" rx="18" fill="#161d35" stroke="#303a5f"/>
-    <text x="22" y="30" fill="#b6a2ff" font-size="12" letter-spacing="2">TODAY IN PUNE</text>
-    <text x="22" y="74" fill="#f8fafc" font-size="30" font-weight="700">13 Nov 2026</text>
-    <text x="22" y="104" fill="#a9b5d3" font-size="13">Friday</text></g>
-<g transform="translate(640,330)">
-    <rect width="280" height="130" rx="18" fill="#161d35" stroke="#303a5f"/>
-    <text x="22" y="30" fill="#b6a2ff" font-size="12" letter-spacing="2">PUNE WEATHER</text>
-    <text x="22" y="74" fill="#f8fafc" font-size="30" font-weight="700">30 °C</text>
-    <text x="22" y="104" fill="#a9b5d3" font-size="13">Overcast</text></g>
-<text x="40" y="493" fill="#8c9bbd" font-size="11">Updated 13 Nov 2026, 03:22 PM IST · Scheduled hourly · Weather: Open-Meteo</text>
+<g clip-path="url(#art)"><rect x="12" y="12" width="160" height="160" fill="#263e54"/><circle cx="132" cy="39" r="13" fill="#ffd38a"/>
+<path d="M12 110 Q50 62 94 110 Q140 75 172 100 V172 H12Z" fill="#39475b"/>
+<g fill="#bc8d7c" stroke="#222b3e" stroke-width="2"><path d="M26 146 V111 H49 V91 H66 V111 H118 V91 H135 V111 H158 V146Z"/><path d="M49 91 L57 80 L66 91 M118 91 L126 80 L135 91" fill="#e2b096"/><path d="M77 146 V125 Q92 105 107 125 V146Z" fill="#222b3e"/></g>
+<rect x="12" y="146" width="160" height="26" fill="#1d293d"/><text x="92" y="164" text-anchor="middle" fill="#d4dbea" font-size="10" letter-spacing="3">PUNE</text></g>
+<text x="190" y="31" font-size="10" fill="#ffd38a" letter-spacing="1.5">A LITTLE PUNE CHECK-IN</text>
+<text x="190" y="65" font-size="27" fill="#eff3fb" font-weight="700">03:28 PM</text>
+<text x="190" y="87" font-size="11" fill="#b3bfd4">Fri, 13 Nov 2026 · IST</text>
+<circle cx="195" cy="108" r="3" fill="#ffd38a"/><text x="205" y="112" font-size="11" fill="#ffd38a">Daytime</text>
+<path d="M382 38 V119" stroke="#30394c"/>
+<text x="404" y="61" font-size="25" font-weight="700" fill="#ffcf82">30°C</text>
+<text x="488" y="58" font-size="11" fill="#ffcf82">Warm</text>
+<rect x="416" y="73" width="100" height="4" rx="2" fill="url(#heat)"/><circle cx="485.8" cy="75" r="4" fill="#ffcf82"/>
+<g transform="translate(567,65) scale(.8)"><path d="M-21 8 H17 A12 12 0 0 0 17 -16 A17 17 0 0 0 -13 -19 A13 13 0 0 0 -21 8" fill="#c1cee4"/></g>
+<text x="404" y="104" font-size="12" fill="#e0e7f5">Cloudy</text>
+<text x="190" y="138" font-size="10" fill="#aab8ce">Feels 29° · Humidity 30%</text>
+<text x="190" y="158" font-size="9" fill="#8594ac">Snapshot 15:28 IST · Hourly refresh · Open-Meteo</text>
 </g></svg>

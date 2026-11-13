@@ -1,8 +1,6 @@
 <p align="center">
-  <img src="assets/pune-dashboard.svg" width="960" alt="Illustrated Pune skyline with Pune local time, date and weather" />
+  <img src="assets/pune-dashboard.svg" width="620" alt="A little Pune check-in: local time, date, day or night, temperature and weather" />
 </p>
-
-<p align="center"><sub>Time and weather are snapshots, scheduled to refresh hourly. Weather data by <a href="https://open-meteo.com/">Open-Meteo</a>. Illustration inspired by Pune’s Shaniwar Wada.</sub></p>
 
 <h1 align="center">Hi, I'm Sahil 👋</h1>
 <p align="center"><strong>Developer • Learner • Builder</strong></p>

@@ -1,3 +1,4 @@
+"""Generate a compact Pune weather snapshot for the profile README."""
 import json
 from datetime import datetime
 from html import escape
@@ -6,57 +7,108 @@ from urllib.request import urlopen
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
-now = datetime.now(ZoneInfo('Asia/Kolkata'))
-weather, detail = 'Unavailable', 'Try again on the next update'
-url = ('https://api.open-meteo.com/v1/forecast?latitude=18.5204&longitude=73.8567'
-       '&current=temperature_2m,weather_code&timezone=Asia%2FKolkata')
-try:
-    with urlopen(url, timeout=25) as response:
-        current = json.load(response)['current']
-    code = current['weather_code']
-    conditions = {0: 'Clear sky', 1: 'Mostly clear', 2: 'Partly cloudy', 3: 'Overcast',
-                  45: 'Fog', 48: 'Rime fog', 51: 'Light drizzle', 53: 'Drizzle',
-                  55: 'Heavy drizzle', 56: 'Freezing drizzle', 57: 'Freezing drizzle',
-                  61: 'Light rain', 63: 'Rain', 65: 'Heavy rain', 66: 'Freezing rain',
-                  67: 'Freezing rain', 71: 'Light snow', 73: 'Snow', 75: 'Heavy snow',
-                  77: 'Snow grains', 80: 'Light showers', 81: 'Showers', 82: 'Heavy showers',
-                  85: 'Snow showers', 86: 'Heavy snow showers', 95: 'Thunderstorm',
-                  96: 'Thunderstorm with hail', 99: 'Thunderstorm with hail'}
-    weather = f"{current['temperature_2m']:.0f} °C"
-    detail = conditions.get(code, 'Weather code ' + str(code))
-except Exception as error:
-    print('Weather unavailable:', type(error).__name__)
+URL = ('https://api.open-meteo.com/v1/forecast?latitude=18.5204&longitude=73.8567'
+       '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,is_day'
+       '&timezone=Asia%2FKolkata')
 
-def card(x, label, value, subtitle):
-    return f'''<g transform="translate({x},330)">
-    <rect width="280" height="130" rx="18" fill="#161d35" stroke="#303a5f"/>
-    <text x="22" y="30" fill="#b6a2ff" font-size="12" letter-spacing="2">{escape(label)}</text>
-    <text x="22" y="74" fill="#f8fafc" font-size="30" font-weight="700">{escape(value)}</text>
-    <text x="22" y="104" fill="#a9b5d3" font-size="13">{escape(subtitle)}</text></g>'''
 
-svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-label="Pune skyline and local time, date and weather dashboard">
-<defs><linearGradient id="sky" x2="1" y2="1"><stop stop-color="#211743"/><stop offset="1" stop-color="#101e38"/></linearGradient></defs>
-<rect width="960" height="520" rx="24" fill="#0d1224"/>
-<rect x="20" y="20" width="920" height="285" rx="18" fill="url(#sky)"/>
+def describe(code):
+    if code == 0:
+        return 'Clear sky', 'clear'
+    if code in (1, 2):
+        return 'Partly cloudy', 'partial'
+    if code == 3:
+        return 'Cloudy', 'cloud'
+    if code in (45, 48):
+        return 'Foggy', 'fog'
+    if code in (51, 53, 55, 56, 57):
+        return 'Drizzle', 'rain'
+    if code in (61, 63, 65, 66, 67, 80, 81, 82):
+        return 'Rainy', 'rain'
+    if code in (71, 73, 75, 77, 85, 86):
+        return 'Snow', 'snow'
+    if code in (95, 96, 99):
+        return 'Thunderstorm', 'storm'
+    return 'Unknown conditions', 'unknown'
+
+
+def render(now, current=None):
+    available = current is not None
+    day = bool(current['is_day']) if available else None
+    label, kind = describe(current['weather_code']) if available else ('Weather unavailable', 'unknown')
+    sky = '#263e54' if day else '#22243f'
+    accent = '#ffd38a' if day else '#c5bdff'
+    period = ('Daytime' if day else 'Nighttime') if available else 'Day/night unavailable'
+    temp = current['temperature_2m'] if available else None
+    temperature = f'{temp:.0f}°C' if available else '—'
+    # Descriptive bands for this widget, not meteorological or health thresholds.
+    band = ('Cold' if temp < 15 else 'Cool' if temp < 22 else 'Mild' if temp < 28
+            else 'Warm' if temp < 33 else 'Hot') if available else 'No reading'
+    color = ('#84caff' if temp < 22 else '#a5e6bc' if temp < 28
+             else '#ffcf82' if temp < 33 else '#ff9f91') if available else '#8c96ad'
+    summary = (f"Feels {current['apparent_temperature']:.0f}° · Humidity {current['relative_humidity_2m']:.0f}%"
+               if available else 'Waiting for the next weather refresh')
+    celestial = ('<circle cx="132" cy="39" r="13" fill="#ffd38a"/>' if day else
+                 '<path d="M140 26 A14 14 0 1 0 145 48 A15 15 0 0 1 140 26" fill="#d6d0ff"/>') if available else ''
+    stars = '' if day or not available else '<g fill="#a8a7ce"><circle cx="28" cy="33" r="1.5"/><circle cx="73" cy="24" r="1"/><circle cx="109" cy="63" r="1.5"/></g>'
+    cloud = '<path d="M-21 8 H17 A12 12 0 0 0 17 -16 A17 17 0 0 0 -13 -19 A13 13 0 0 0 -21 8" fill="#c1cee4"/>'
+    sun = '<circle cx="0" cy="-9" r="15" fill="#ffd38a"/>'
+    moon = '<path d="M5 -25 A17 17 0 1 0 15 -1 A18 18 0 0 1 5 -25" fill="#d6d0ff"/>'
+    icon = sun if day else moon
+    if kind in ('cloud', 'fog', 'rain', 'snow', 'storm'):
+        icon = cloud
+    elif kind == 'partial':
+        icon = f'<g transform="translate(10,-8)">{icon}</g>{cloud}'
+    elif kind == 'unknown':
+        icon = '<text x="-8" y="3" fill="#98a6bf" font-size="26">?</text>'
+    if kind == 'rain':
+        icon += '<path d="M-13 16 l-3 7 M0 16 l-3 7 M13 16 l-3 7" stroke="#82bcff" stroke-width="3" stroke-linecap="round"/>'
+    elif kind == 'storm':
+        icon += '<path d="M2 10 l-9 15 h8 l-3 10 14-18 H4 l4-7" fill="#ffcf82"/>'
+    elif kind == 'fog':
+        icon += '<path d="M-20 17 H20 M-14 24 H14" stroke="#9cacc7" stroke-width="3" stroke-linecap="round"/>'
+    elif kind == 'snow':
+        icon += '<g fill="#d8eeff"><circle cx="-12" cy="20" r="2"/><circle cy="25" r="2"/><circle cx="12" cy="20" r="2"/></g>'
+    position = max(0, min(100, (temp + 5) / 50 * 100)) if available else 0
+    thermometer = f'<circle cx="{416 + position:.1f}" cy="75" r="4" fill="{color}"/>' if available else ''
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="620" height="184" viewBox="0 0 620 184" role="img" aria-label="{escape(period + ', Pune: ' + temperature + ', ' + label)}">
+<defs><linearGradient id="heat"><stop stop-color="#84caff"/><stop offset=".5" stop-color="#a5e6bc"/><stop offset="1" stop-color="#ff9f91"/></linearGradient><clipPath id="art"><rect x="12" y="12" width="160" height="160" rx="12"/></clipPath></defs>
+<rect x=".5" y=".5" width="619" height="183" rx="16" fill="#111827" stroke="#30394c"/>
 <g font-family="Verdana,Arial,sans-serif">
-<text x="52" y="67" fill="#c2afff" font-size="12" letter-spacing="4">A LITTLE CORNER OF MY WORLD</text>
-<text x="50" y="132" fill="#ffffff" font-size="58" font-weight="700">PUNE</text>
-<text x="53" y="163" fill="#d4d9ed" font-size="16">Maharashtra, India · Building, learning, contributing.</text>
-<circle cx="826" cy="85" r="34" fill="#ffcda3"/>
-<path d="M20 268 Q160 170 300 260 Q430 184 580 267 Q750 170 940 255 V305 H20Z" fill="#343759"/>
-<!-- Stylized illustration inspired by Shaniwar Wada; not a photograph. -->
-<g fill="#d19685" stroke="#281e35" stroke-width="3">
-<path d="M370 294 V237 H395 V211 H429 V237 H530 V211 H564 V237 H590 V294Z"/>
-<path d="M395 211 L412 195 L429 211 M530 211 L547 195 L564 211" fill="#ffcda3"/>
-<path d="M448 294 V262 Q480 219 512 262 V294Z" fill="#231e36"/>
-<path d="M300 294 V264 H370 V294 M590 294 V264 H665 V294"/>
-</g>
-<g fill="#121a30"><path d="M45 294 V251 H75 V231 H106 V294 M130 294 V242 H169 V294 M690 294 V224 H731 V294 M748 294 V247 H784 V294 M852 294 V229 H893 V294"/></g>
-<text x="53" y="287" fill="#cad3eb" font-size="10">PUNE · ILLUSTRATED SKYLINE</text>
-{card(40, 'LOCAL TIME', now.strftime('%I:%M %p'), 'IST · UTC +05:30 · snapshot')}
-{card(340, 'TODAY IN PUNE', now.strftime('%d %b %Y'), now.strftime('%A'))}
-{card(640, 'PUNE WEATHER', weather, detail)}
-<text x="40" y="493" fill="#8c9bbd" font-size="11">Updated {now.strftime('%d %b %Y, %I:%M %p')} IST · Scheduled hourly · Weather: Open-Meteo</text>
+<g clip-path="url(#art)"><rect x="12" y="12" width="160" height="160" fill="{sky}"/>{stars}{celestial}
+<path d="M12 110 Q50 62 94 110 Q140 75 172 100 V172 H12Z" fill="#39475b"/>
+<g fill="#bc8d7c" stroke="#222b3e" stroke-width="2"><path d="M26 146 V111 H49 V91 H66 V111 H118 V91 H135 V111 H158 V146Z"/><path d="M49 91 L57 80 L66 91 M118 91 L126 80 L135 91" fill="#e2b096"/><path d="M77 146 V125 Q92 105 107 125 V146Z" fill="#222b3e"/></g>
+<rect x="12" y="146" width="160" height="26" fill="#1d293d"/><text x="92" y="164" text-anchor="middle" fill="#d4dbea" font-size="10" letter-spacing="3">PUNE</text></g>
+<text x="190" y="31" font-size="10" fill="{accent}" letter-spacing="1.5">A LITTLE PUNE CHECK-IN</text>
+<text x="190" y="65" font-size="27" fill="#eff3fb" font-weight="700">{now.strftime('%I:%M %p')}</text>
+<text x="190" y="87" font-size="11" fill="#b3bfd4">{now.strftime('%a, %d %b %Y')} · IST</text>
+<circle cx="195" cy="108" r="3" fill="{accent}"/><text x="205" y="112" font-size="11" fill="{accent}">{period}</text>
+<path d="M382 38 V119" stroke="#30394c"/>
+<text x="404" y="61" font-size="25" font-weight="700" fill="{color}">{temperature}</text>
+<text x="488" y="58" font-size="11" fill="{color}">{band}</text>
+<rect x="416" y="73" width="100" height="4" rx="2" fill="url(#heat)"/>{thermometer}
+<g transform="translate(567,65) scale(.8)">{icon}</g>
+<text x="404" y="104" font-size="12" fill="#e0e7f5">{escape(label)}</text>
+<text x="190" y="138" font-size="10" fill="#aab8ce">{escape(summary)}</text>
+<text x="190" y="158" font-size="9" fill="#8594ac">Snapshot {now.strftime('%H:%M')} IST · Hourly refresh · Open-Meteo</text>
 </g></svg>'''
-(ROOT / 'assets').mkdir(exist_ok=True)
-(ROOT / 'assets/pune-dashboard.svg').write_text(svg, encoding='utf-8')
+
+
+def main():
+    current = None
+    try:
+        with urlopen(URL, timeout=25) as response:
+            current = json.load(response)['current']
+        for key in ('temperature_2m', 'apparent_temperature', 'relative_humidity_2m', 'weather_code', 'is_day'):
+            if current.get(key) is None:
+                raise ValueError('Missing weather field: ' + key)
+    except Exception as error:
+        print('Weather unavailable:', type(error).__name__)
+        current = None
+    svg = render(datetime.now(ZoneInfo('Asia/Kolkata')), current)
+    (ROOT / 'assets').mkdir(exist_ok=True)
+    (ROOT / 'assets/pune-dashboard.svg').write_text(svg, encoding='utf-8')
+
+
+if __name__ == '__main__':
+    main()
