@@ -1,21 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="620" height="184" viewBox="0 0 620 184" role="img" aria-label="Daytime, Pune: 30°C, Cloudy">
-<defs><linearGradient id="heat"><stop stop-color="#84caff"/><stop offset=".5" stop-color="#a5e6bc"/><stop offset="1" stop-color="#ff9f91"/></linearGradient><clipPath id="art"><rect x="12" y="12" width="160" height="160" rx="12"/></clipPath></defs>
-<rect x=".5" y=".5" width="619" height="183" rx="16" fill="#111827" stroke="#30394c"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="226" viewBox="0 0 500 226" role="img" aria-label="Pune weather: 30°C, Cloudy, Daytime. Time snapshot 03:34 PM IST">
+<rect x=".5" y=".5" width="499" height="225" rx="18" fill="#111827" stroke="#30394c"/>
 <g font-family="Verdana,Arial,sans-serif">
-<g clip-path="url(#art)"><rect x="12" y="12" width="160" height="160" fill="#263e54"/><circle cx="132" cy="39" r="13" fill="#ffd38a"/>
-<path d="M12 110 Q50 62 94 110 Q140 75 172 100 V172 H12Z" fill="#39475b"/>
-<g fill="#bc8d7c" stroke="#222b3e" stroke-width="2"><path d="M26 146 V111 H49 V91 H66 V111 H118 V91 H135 V111 H158 V146Z"/><path d="M49 91 L57 80 L66 91 M118 91 L126 80 L135 91" fill="#e2b096"/><path d="M77 146 V125 Q92 105 107 125 V146Z" fill="#222b3e"/></g>
-<rect x="12" y="146" width="160" height="26" fill="#1d293d"/><text x="92" y="164" text-anchor="middle" fill="#d4dbea" font-size="10" letter-spacing="3">PUNE</text></g>
-<text x="190" y="31" font-size="10" fill="#ffd38a" letter-spacing="1.5">A LITTLE PUNE CHECK-IN</text>
-<text x="190" y="65" font-size="27" fill="#eff3fb" font-weight="700">03:28 PM</text>
-<text x="190" y="87" font-size="11" fill="#b3bfd4">Fri, 13 Nov 2026 · IST</text>
-<circle cx="195" cy="108" r="3" fill="#ffd38a"/><text x="205" y="112" font-size="11" fill="#ffd38a">Daytime</text>
-<path d="M382 38 V119" stroke="#30394c"/>
-<text x="404" y="61" font-size="25" font-weight="700" fill="#ffcf82">30°C</text>
-<text x="488" y="58" font-size="11" fill="#ffcf82">Warm</text>
-<rect x="416" y="73" width="100" height="4" rx="2" fill="url(#heat)"/><circle cx="485.8" cy="75" r="4" fill="#ffcf82"/>
-<g transform="translate(567,65) scale(.8)"><path d="M-21 8 H17 A12 12 0 0 0 17 -16 A17 17 0 0 0 -13 -19 A13 13 0 0 0 -21 8" fill="#c1cee4"/></g>
-<text x="404" y="104" font-size="12" fill="#e0e7f5">Cloudy</text>
-<text x="190" y="138" font-size="10" fill="#aab8ce">Feels 29° · Humidity 30%</text>
-<text x="190" y="158" font-size="9" fill="#8594ac">Snapshot 15:28 IST · Hourly refresh · Open-Meteo</text>
+<text x="24" y="32" font-size="10" letter-spacing="2" fill="#a3b0c5">CURRENT WEATHER</text>
+<text x="24" y="57" font-size="13" fill="#dbe4f2">Pune, India</text>
+<g transform="translate(48,108) scale(.9)"><path d="M-21 8 H17 A12 12 0 0 0 17 -16 A17 17 0 0 0 -13 -19 A13 13 0 0 0 -21 8" fill="#c1cee4"/></g>
+<text x="85" y="121" font-size="42" font-weight="700" fill="#ffcf82">30°C</text>
+<text x="24" y="153" font-size="14" fill="#e1e8f5">Cloudy</text>
+<text x="24" y="176" font-size="11" fill="#ffd38a">Daytime · Warm</text>
+<path d="M270 27 V181" stroke="#30394c"/>
+<g transform="translate(377,76)">
+<circle r="34" fill="#1c2639" stroke="#566079"/>
+<path d="M0 -28 V-24 M28 0 H24 M0 28 V24 M-28 0 H-24" stroke="#b4bfd1" stroke-width="2"/>
+<path d="M0 3 V-16" transform="rotate(107.0)" stroke="#e4eaf5" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M0 4 V-24" transform="rotate(204)" stroke="#ffd38a" stroke-width="2" stroke-linecap="round"/>
+<circle r="3" fill="#ffd38a"/>
+</g>
+<text x="377" y="137" text-anchor="middle" font-size="23" font-weight="700" fill="#f0f4fb">03:34 PM</text>
+<text x="377" y="158" text-anchor="middle" font-size="11" fill="#b0bdd2">Fri, 13 Nov 2026</text>
+<text x="377" y="178" text-anchor="middle" font-size="10" fill="#95a5bd">IST · UTC +05:30</text>
+<path d="M24 192 H476" stroke="#273247"/>
+<text x="24" y="212" font-size="9" fill="#8f9fb7">Snapshot 15:34 IST · Hourly refresh · Weather: Open-Meteo</text>
 </g></svg>

@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/pune-dashboard.svg" width="620" alt="A little Pune check-in: local time, date, day or night, temperature and weather" />
-</p>
-
 <h1 align="center">Hi, I'm Sahil 👋</h1>
 <p align="center"><strong>Developer • Learner • Builder</strong></p>
 <p align="center">I enjoy building useful things and sharing what I learn.</p>
@@ -20,7 +16,7 @@ Write a few lines about yourself here—what you enjoy creating, what you're int
 ## 🛠️ Skills & Tools
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=java,spring,azure,python,js,react,nodejs,express,html,css,git,github&theme=dark&perline=6" alt="Java, Spring Boot, Azure, Python, JavaScript, React, Node.js, Express, HTML, CSS, Git and GitHub" />
+  <img src="https://skillicons.dev/icons?i=java,spring,azure,docker,linux,python,js,react,tailwind,nodejs,express,html,css,git,github&theme=dark&perline=6" alt="Java, Spring Boot, Azure, Docker, Linux, Python, JavaScript, React, Tailwind CSS, Node.js, Express, HTML, CSS, Git and GitHub" />
 </p>
 <p align="center">
   <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude-color.svg" width="48" height="48" alt="Claude" title="Claude" />
@@ -75,3 +71,9 @@ Write a few lines about yourself here—what you enjoy creating, what you're int
 [Email](mailto:YOUR_EMAIL)
 
 <p align="center">Thanks for visiting! Explore my repositories below. ✨</p>
+
+---
+
+<p align="center">
+  <img src="assets/pune-dashboard.svg" width="500" alt="Current weather in Pune, India, with condition icon, temperature, day or night, and an IST date and time snapshot" />
+</p>
