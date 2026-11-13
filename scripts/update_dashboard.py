@@ -131,7 +131,7 @@ def render(now, current=None, stale=False):
 <text x="41" y="182" font-size="11" fill="{accent}">{period} · {band}</text>
 <path d="M26 198 H257" stroke="#383b4b"/>
 <text x="26" y="217" font-size="10" fill="#c1bfce">{now.strftime('%a, %d %b %Y')}</text>
-<text x="26" y="232" font-size="8" fill="#9b9bad">{'Refresh delayed' if stale else 'Hourly snapshot'} · {escape(source)}</text>
+<text x="26" y="232" font-size="8" fill="#9b9bad">{'Refresh delayed' if stale else 'Weather snapshot'} · {escape(source)}</text>
 </g></svg>'''
 
 
@@ -210,6 +210,8 @@ def main():
         observed = datetime.fromisoformat(snapshot['observed_at'])
         stale = True
         print('Using saved reading from', observed.isoformat())
+    age = datetime.now(ZoneInfo('Asia/Kolkata')) - observed
+    stale = stale or age.total_seconds() > 7200
     svg = render(observed, current, stale=stale)
     (ROOT / 'assets').mkdir(exist_ok=True)
     (ROOT / 'assets/pune-dashboard.svg').write_text(

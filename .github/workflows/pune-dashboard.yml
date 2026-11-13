@@ -2,8 +2,8 @@ name: Update Pune dashboard
 on:
   workflow_dispatch:
   schedule:
-    # GitHub cron uses UTC: :30 UTC is the start of each hour in Pune (IST).
-    - cron: '30 * * * *'
+    # Re-register the hourly trigger. :30 UTC is :00 in Pune (IST).
+    - cron: '30 0-23 * * *'
   push:
     paths:
       - scripts/update_dashboard.py
