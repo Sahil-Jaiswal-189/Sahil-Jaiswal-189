@@ -5,6 +5,7 @@
     "interval": 900,
     "temperature_2m": 29.1,
     "weather_code": 3,
-    "is_day": 1
+    "is_day": 1,
+    "source": "Open-Meteo"
   }
 }

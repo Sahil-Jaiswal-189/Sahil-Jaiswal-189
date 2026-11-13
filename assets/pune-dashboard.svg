@@ -43,7 +43,7 @@
     <rect x="288" y="12" width="260" height="218" rx="14" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
     </g>
 <g font-family="Arial,Helvetica,sans-serif">
-<text x="26" y="31" font-size="9" letter-spacing="2.5" fill="#edc49c">LAST KNOWN WEATHER</text>
+<text x="26" y="31" font-size="9" letter-spacing="2.5" fill="#edc49c">CURRENT WEATHER</text>
 <text x="25" y="62" font-size="23" font-weight="600" fill="#f6eee7">Pune<tspan dx="7" font-size="12" font-weight="400" fill="#a2a4b5">/ India</tspan></text>
 <text x="23" y="130" font-size="68" font-weight="500" letter-spacing="-4" fill="#f6eee7">29°<tspan dx="8" font-size="23" letter-spacing="0" fill="#a5a7b8">C</tspan></text>
 <text x="27" y="157" font-size="15" fill="#dedce5">Cloudy</text>
@@ -51,5 +51,5 @@
 <text x="41" y="182" font-size="11" fill="#edc49c">Daytime · Warm</text>
 <path d="M26 198 H257" stroke="#383b4b"/>
 <text x="26" y="217" font-size="10" fill="#c1bfce">Fri, 13 Nov 2026</text>
-<text x="26" y="232" font-size="8" fill="#9b9bad">Refresh delayed · Open-Meteo</text>
+<text x="26" y="232" font-size="8" fill="#9b9bad">Hourly snapshot · Open-Meteo</text>
 </g></svg>
