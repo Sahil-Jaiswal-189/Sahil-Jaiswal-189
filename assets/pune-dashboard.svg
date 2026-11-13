@@ -20,7 +20,7 @@
 <g transform="translate(40,330)">
     <rect width="280" height="130" rx="18" fill="#161d35" stroke="#303a5f"/>
     <text x="22" y="30" fill="#b6a2ff" font-size="12" letter-spacing="2">LOCAL TIME</text>
-    <text x="22" y="74" fill="#f8fafc" font-size="30" font-weight="700">03:16 PM</text>
+    <text x="22" y="74" fill="#f8fafc" font-size="30" font-weight="700">03:22 PM</text>
     <text x="22" y="104" fill="#a9b5d3" font-size="13">IST · UTC +05:30 · snapshot</text></g>
 <g transform="translate(340,330)">
     <rect width="280" height="130" rx="18" fill="#161d35" stroke="#303a5f"/>
@@ -32,5 +32,5 @@
     <text x="22" y="30" fill="#b6a2ff" font-size="12" letter-spacing="2">PUNE WEATHER</text>
     <text x="22" y="74" fill="#f8fafc" font-size="30" font-weight="700">30 °C</text>
     <text x="22" y="104" fill="#a9b5d3" font-size="13">Overcast</text></g>
-<text x="40" y="493" fill="#8c9bbd" font-size="11">Updated 13 Nov 2026, 03:16 PM IST · Scheduled hourly · Weather: Open-Meteo</text>
+<text x="40" y="493" fill="#8c9bbd" font-size="11">Updated 13 Nov 2026, 03:22 PM IST · Scheduled hourly · Weather: Open-Meteo</text>
 </g></svg>
