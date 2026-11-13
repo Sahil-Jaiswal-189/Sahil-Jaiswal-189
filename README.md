@@ -1,24 +1,16 @@
 <h1 align="center">Hi, I'm Sahil 👋</h1>
-<p align="center"><strong>Backend Engineer • Learner • Builder</strong></p>
-<p align="center">Based in Pune, India. I enjoy building practical software and finding better ways to work.</p>
-
----
+<p align="center"><strong>Backend Engineer</strong></p>
+<p align="center">Based in Pune, India. Usually building something, learning something, or figuring out why something broke.</p>
 
 ## 🧑‍💻 About Me
 
-I’m a curious software engineer, eager to understand **software fundamentals** and turn that understanding into **meaningful contributions**.
+I like understanding how software works, especially the fundamentals behind the tools I use. There’s always more to learn, and I enjoy getting my hands dirty with a project to make sense of it.
 
-- 🧠 **Driven by curiosity** — I enjoy figuring out how things work and why design choices matter.
-- 🛠️ **Learning by building** — from MERN projects in college to Python, ML, and deep learning explorations.
-- 🤝 **Growing through collaboration** — sharing what I learn and improving software alongside others.
-
----
+🛠️ I’ve worked with the **MERN stack since college**, built **Python projects**, and spent time learning **ML and deep learning**. I’d like to use what I know to make useful contributions and keep learning from the people I work with.
 
 ## 💼 Work Experience
 
-### Backend Engineer · Current Role
-
-For the past **two years**, I’ve been working as a backend engineer at my company, building backend applications with **Java and Spring Boot** and working with **Azure**.
+I’ve been working as a **backend engineer for two years**, building applications with **Java and Spring Boot** and working with **Azure**.
 
 ## 🛠️ Skills & Tools
 
@@ -32,30 +24,27 @@ For the past **two years**, I’ve been working as a backend engineer at my comp
 </p>
 <p align="center"><sub>AI tools: Claude · Codex</sub></p>
 
----
-
 ## 🤝 Open Source Contributions
 
 [![Contributor](https://img.shields.io/badge/1st%20PR%20MERGED-KESTRA-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://kestra.io/community?from=github-badge)
 
-- 🎉 My first merged open-source pull request was in **Kestra**!
+🎉 **Kestra** was where I got my first open source pull request merged!
 
 ## 📚 Currently Exploring
 
-- **System design** — learning how to design reliable applications and understand architectural trade-offs.
-- **Open source** — looking for more opportunities to contribute, collaborate, and learn from other developers.
-- **AI tools in everyday development** — exploring new features in tools like Claude and Codex to streamline daily work.
-- **Hackathons** — keen to participate in more events, try new technologies, and build with others.
+🧩 **System design:** Getting better at understanding how the pieces of an application fit together and why certain designs work.
 
----
+🌱 **Open source:** Finding projects I can help with and learning from other contributors.
+
+🤖 **AI tools:** Trying new features in Claude, Codex, and other tools to see what actually helps with my daily work.
+
+💻 **Hackathons:** Looking to join more, try something new, and build with people.
 
 ## 🔥 GitHub Contribution Streak
 
 <p align="center">
   <img src="https://streak-stats.demolab.com/?user=Sahil-Jaiswal-189&theme=tokyonight&hide_border=true" alt="GitHub contribution streak for Sahil-Jaiswal-189" />
 </p>
-
----
 
 ## 🔗 Connect With Me
 
@@ -69,7 +58,7 @@ For the past **two years**, I’ve been working as a backend engineer at my comp
   </a>
 </p>
 
-<p align="center">Thanks for visiting! Explore my repositories below. ✨</p>
+<p align="center">Thanks for stopping by 👋</p>
 
 <p align="center">
   <img src="assets/pune-dashboard.svg" width="560" alt="Pune weather: temperature, conditions, day or night, and date; refreshed hourly" />
