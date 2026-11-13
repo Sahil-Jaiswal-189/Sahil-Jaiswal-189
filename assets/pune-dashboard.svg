@@ -1,26 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="480" height="228" viewBox="0 0 480 228" role="img" aria-label="Pune weather: —, Weather unavailable, Day/night unavailable, 13 Nov 2026">
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="244" viewBox="0 0 560 244" role="img" aria-label="Pune weather: 29° Celsius, Cloudy, Daytime, 13 Nov 2026">
 <defs>
-  <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#192234"/><stop offset="1" stop-color="#101722"/></linearGradient>
-  <radialGradient id="glow"><stop stop-color="#c5bdff" stop-opacity=".14"/><stop offset="1" stop-color="#c5bdff" stop-opacity="0"/></radialGradient>
+<linearGradient id="card" x2="1" y2="1"><stop stop-color="#202330"/><stop offset="1" stop-color="#121a27"/></linearGradient>
+<clipPath id="scene"><rect x="288" y="12" width="260" height="218" rx="14"/></clipPath>
 </defs>
-<rect x=".5" y=".5" width="479" height="227" rx="20" fill="url(#card)" stroke="#303b50"/>
-<g font-family="Verdana,Arial,sans-serif">
-<text x="26" y="32" font-size="9" letter-spacing="2.4" fill="#99a9c0">CURRENT WEATHER</text>
-<g transform="translate(296,19)">
-  <rect width="158" height="24" rx="12" fill="#c5bdff" fill-opacity=".09"/>
-  <circle cx="12" cy="12" r="2.5" fill="#c5bdff"/>
-  <text x="21" y="16" font-size="9" fill="#c5bdff">Day/night unavailable</text>
-</g>
-<path d="M29 52 a4 4 0 1 0 0 8 a4 4 0 1 0 0 -8 M26 60 l3 4 3-4" fill="none" stroke="#aebcd0" stroke-width="1.2"/>
-<text x="42" y="63" font-size="13" fill="#d8e1ee">Pune, India</text>
-<text x="24" y="128" font-size="54" font-weight="700" letter-spacing="-2" fill="#f3f6fc">—</text>
-<text x="27" y="156" font-size="14" fill="#d1dcec">Weather unavailable</text>
-<circle cx="30" cy="176" r="3" fill="#8c96ad"/>
-<text x="40" y="180" font-size="10" fill="#8c96ad">No reading</text>
-<circle cx="373" cy="112" r="73" fill="url(#glow)"/>
-<circle cx="373" cy="112" r="48" fill="none" stroke="#c5bdff" stroke-opacity=".08"/>
-<g transform="translate(373,118) scale(1.65)"><text x="-8" y="3" fill="#98a6bf" font-size="26">?</text></g>
-<path d="M26 195 H454" stroke="#2b3648"/>
-<text x="26" y="215" font-size="9" fill="#9cacc1">Fri, 13 Nov 2026</text>
-<text x="454" y="215" text-anchor="end" font-size="8" fill="#8999b0">Hourly snapshot · Open-Meteo</text>
+<rect x=".5" y=".5" width="559" height="243" rx="22" fill="url(#card)" stroke="#3b3d4d"/>
+<defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#222b50"/><stop offset="1" stop-color="#c39180"/></linearGradient>
+    <linearGradient id="sun" x2="0" y2="1"><stop stop-color="#ffe9b6"/><stop offset="1" stop-color="#f4b787"/></linearGradient>
+    <linearGradient id="cloud" x2="0" y2="1"><stop stop-color="#d9d9e5"/><stop offset="1" stop-color="#8e99b3"/></linearGradient>
+    <linearGradient id="stone" x2="1" y2="1"><stop stop-color="#c8a08d"/><stop offset="1" stop-color="#916b6a"/></linearGradient>
+    </defs>
+    <g clip-path="url(#scene)">
+    <path fill="url(#sky)" d="M288 12 H548 V230 H288Z"/>
+
+    <path d="M288 145 Q321 114 359 129 Q398 92 437 131 Q501 93 548 127 V230 H288Z" fill="#5c6074" opacity=".6"/>
+    <path d="M288 167 Q332 132 376 157 Q438 118 478 152 Q518 133 548 150 V230 H288Z" fill="#444b62"/>
+    <path d="M288 181 Q330 154 377 180 Q453 148 548 173 V230 H288Z" fill="#313d50"/>
+    <g fill="url(#cloud)" opacity=".8">
+        <path d="M330 82 C319 82 318 69 328 66 C329 52 349 47 357 61 C370 55 380 65 376 75 C389 77 386 87 376 87 H333Z"/>
+        <path d="M424 111 C410 111 409 94 423 91 C426 74 450 69 461 87 C478 80 490 92 486 103 C503 104 500 117 486 117 H430Z"/>
+        </g>
+    <!-- Stylized Pune fort: layered roofs, bastions and central gateway. -->
+    <path d="M315 199 V166 H339 V145 H380 V163 H466 V145 H507 V166 H530 V199Z" fill="#584c58"/>
+    <path d="M321 196 V170 H345 V149 H375 V168 H471 V149 H501 V170 H525 V196Z" fill="url(#stone)"/>
+    <path d="M339 148 L360 134 L381 148Z M465 148 L486 134 L507 148Z" fill="#d5ad95"/>
+    <path d="M339 148 H381 M465 148 H507 M375 168 H471" stroke="#493c50" stroke-width="3"/>
+    <path d="M345 154 H375 M471 154 H501 M321 178 H397 M449 178 H525" stroke="#e2b69a" stroke-opacity=".5"/>
+    <path d="M397 196 V167 L423 155 L449 167 V196Z" fill="#b88e7f"/>
+    <path d="M394 167 L423 151 L452 167Z" fill="#dcb69a"/>
+    <path d="M410 196 V179 Q423 159 436 179 V196Z" fill="#2b2c40"/>
+    <path d="M415 196 V180 Q423 167 431 180 V196Z" fill="#554353"/>
+    <path d="M423 174 V196 M415 184 H431" stroke="#b08770" stroke-width=".8"/>
+    <path d="M348 163 v-8 a3 3 0 0 1 6 0 v8Z" fill="#493648" opacity=".85"/><path d="M366 163 v-8 a3 3 0 0 1 6 0 v8Z" fill="#493648" opacity=".85"/><path d="M474 163 v-8 a3 3 0 0 1 6 0 v8Z" fill="#493648" opacity=".85"/><path d="M492 163 v-8 a3 3 0 0 1 6 0 v8Z" fill="#493648" opacity=".85"/>
+    <path d="M360 135 V116" stroke="#d1af94" stroke-width="1.2"/>
+    <path d="M361 116 l17 4 -17 7Z" fill="#e6a078"/>
+    <path d="M288 200 Q358 185 402 197 L390 230 H288Z M444 197 Q487 187 548 201 V230 H461Z" fill="#253342"/>
+    <path d="M410 197 H436 L463 230 H389Z" fill="#9e8c87" opacity=".5"/>
+    <path d="M423 202 L423 226" stroke="#e1b89b" stroke-opacity=".3"/>
+    <g fill="#1e2d3c"><path d="M302 230 V190 Q287 184 294 176 Q307 177 308 191 Q310 175 321 177 Q326 188 312 197 V230Z"/>
+    <path d="M528 230 V188 Q513 177 518 167 Q532 167 534 185 Q535 175 546 176 Q551 189 538 196 V230Z"/></g>
+
+    <rect x="288" y="12" width="260" height="218" rx="14" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+    </g>
+<g font-family="Arial,Helvetica,sans-serif">
+<text x="26" y="31" font-size="9" letter-spacing="2.5" fill="#edc49c">CURRENT WEATHER</text>
+<text x="25" y="62" font-size="23" font-weight="600" fill="#f6eee7">Pune<tspan dx="7" font-size="12" font-weight="400" fill="#a2a4b5">/ India</tspan></text>
+<text x="23" y="130" font-size="68" font-weight="500" letter-spacing="-4" fill="#f6eee7">29°<tspan dx="8" font-size="23" letter-spacing="0" fill="#a5a7b8">C</tspan></text>
+<text x="27" y="157" font-size="15" fill="#dedce5">Cloudy</text>
+<circle cx="31" cy="178" r="3" fill="#edc49c"/>
+<text x="41" y="182" font-size="11" fill="#edc49c">Daytime · Warm</text>
+<path d="M26 198 H257" stroke="#383b4b"/>
+<text x="26" y="217" font-size="10" fill="#c1bfce">Fri, 13 Nov 2026</text>
+<text x="26" y="232" font-size="8" fill="#9b9bad">Hourly snapshot · Open-Meteo</text>
 </g></svg>

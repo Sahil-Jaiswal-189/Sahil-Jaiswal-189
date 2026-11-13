@@ -75,7 +75,7 @@ Write a few lines about yourself here—what you enjoy creating, what you're int
 ---
 
 <p align="center">
-  <img src="assets/pune-dashboard.svg" width="480" alt="Pune weather: temperature, conditions, day or night, and date; refreshed hourly" />
+  <img src="assets/pune-dashboard.svg" width="560" alt="Pune weather: temperature, conditions, day or night, and date; refreshed hourly" />
 </p>
 
 <!-- Codex icon adapted from LobeHub Icons (MIT). See assets/lobehub-LICENSE. -->
