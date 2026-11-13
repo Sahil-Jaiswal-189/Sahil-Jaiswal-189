@@ -6,7 +6,11 @@
 
 ## 🧑‍💻 About Me
 
-I’ve worked with the **MERN stack since college**, built **Python projects**, and developed knowledge of **machine learning and deep learning**. I like exploring different areas of software development and putting what I learn into practice.
+I’m a curious software engineer who enjoys getting beneath the surface of how software works. Building something that runs is rewarding; understanding the fundamentals behind it, the choices that shaped it, and how it could be improved is what keeps me learning.
+
+That curiosity has taken me from working with the **MERN stack in college** to building **Python projects**, learning about **machine learning and deep learning**, and working professionally in backend engineering. Each has given me a different way to approach a problem and more questions to explore.
+
+I want to turn that learning into meaningful contributions: solving useful problems, improving software that others rely on, and learning alongside people who care about their craft. I’m still early in that journey, and I’m eager to keep asking questions, sharing what I learn, and taking on work that stretches my understanding.
 
 ## 💼 Work Experience
 
