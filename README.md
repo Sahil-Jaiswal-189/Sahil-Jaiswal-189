@@ -1,17 +1,18 @@
 <h1 align="center">Hi, I'm Sahil 👋</h1>
-<p align="center"><strong>Developer • Learner • Builder</strong></p>
-<p align="center">I enjoy building useful things and sharing what I learn.</p>
-
-- 🔭 Currently working on: **YOUR_CURRENT_PROJECT**
-- 🌱 Currently learning: **YOUR_LEARNING_GOALS**
-- 💬 Ask me about: **YOUR_INTERESTS**
-- 📫 Reach me at: **YOUR_EMAIL**
+<p align="center"><strong>Backend Engineer • Learner • Builder</strong></p>
+<p align="center">Based in Pune, India. I enjoy building practical software and finding better ways to work.</p>
 
 ---
 
 ## 🧑‍💻 About Me
 
-Write a few lines about yourself here—what you enjoy creating, what you're interested in, and what you're working toward.
+I’ve worked with the **MERN stack since college**, built **Python projects**, and developed knowledge of **machine learning and deep learning**. I like exploring different areas of software development and putting what I learn into practice.
+
+## 💼 Work Experience
+
+### Backend Engineer · Current Role
+
+For the past **two years**, I’ve been working as a backend engineer at my company, building backend applications with **Java and Spring Boot** and working with **Azure**.
 
 ## 🛠️ Skills & Tools
 
@@ -27,28 +28,20 @@ Write a few lines about yourself here—what you enjoy creating, what you're int
 
 ---
 
-## 🚀 Featured Projects
-
-| Project | What it does | Code |
-|---------|--------------|------|
-| **PROJECT_ONE** | A short description of your project. | [View repository](https://github.com/Sahil-Jaiswal-189/PROJECT_ONE) |
-| **PROJECT_TWO** | A short description of your project. | [View repository](https://github.com/Sahil-Jaiswal-189/PROJECT_TWO) |
-| **PROJECT_THREE** | A short description of your project. | [View repository](https://github.com/Sahil-Jaiswal-189/PROJECT_THREE) |
-
-## 🏆 Achievements
-
-- 🥇 **Achievement title** — What you accomplished and when.
-- 🎓 **Certification or course** — Issuing organization, year.
-- 💻 **Hackathon or competition** — Your result or contribution.
-- 🌟 **Personal milestone** — Something you're proud of.
-
----
-
 ## 🤝 Open Source Contributions
 
 [![Contributor](https://img.shields.io/badge/1st%20PR%20MERGED-KESTRA-1F232C?style=for-the-badge&logo=github&logoColor=200062&labelColor=CDC5FF)](https://kestra.io/community?from=github-badge)
 
 - 🎉 My first merged open-source pull request was in **Kestra**!
+
+## 📚 Currently Exploring
+
+- **System design** — learning how to design reliable applications and understand architectural trade-offs.
+- **Open source** — looking for more opportunities to contribute, collaborate, and learn from other developers.
+- **AI tools in everyday development** — exploring new features in tools like Claude and Codex to streamline daily work.
+- **Hackathons** — keen to participate in more events, try new technologies, and build with others.
+
+---
 
 ## 🔥 GitHub Contribution Streak
 
@@ -58,21 +51,7 @@ Write a few lines about yourself here—what you enjoy creating, what you're int
 
 ---
 
-## 📚 Currently Exploring
-
-- A topic you're learning
-- An idea you'd like to build
-- An open-source project you'd like to contribute to
-
-## 🔗 Connect With Me
-
-[Portfolio](https://YOUR_WEBSITE.com) ·
-[LinkedIn](https://www.linkedin.com/in/YOUR_PROFILE) ·
-[Email](mailto:YOUR_EMAIL)
-
 <p align="center">Thanks for visiting! Explore my repositories below. ✨</p>
-
----
 
 <p align="center">
   <img src="assets/pune-dashboard.svg" width="560" alt="Pune weather: temperature, conditions, day or night, and date; refreshed hourly" />
