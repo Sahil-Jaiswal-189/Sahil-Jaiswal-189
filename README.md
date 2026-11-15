@@ -82,10 +82,5 @@ I learnt Spring Boot on the job, getting comfortable with it by building feature
 
 <p align="center">Thanks for stopping by 👋</p>
 
-<br>
-
-<p align="center">
-  <img src="assets/pune-dashboard.svg" width="560" alt="Pune weather snapshot: temperature, conditions, day or night, and date" />
-</p>
 
 <!-- Codex icon adapted from LobeHub Icons (MIT). See assets/lobehub-LICENSE. -->
