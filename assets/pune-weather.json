@@ -1,12 +1,11 @@
 {
-  "observed_at": "2026-11-15T04:46:18.358552+05:30",
+  "observed_at": "2026-11-15T08:15:00+05:30",
   "current": {
-    "temperature_2m": 17.0,
-    "weather_code": -1,
-    "is_day": 0,
-    "time": "2026-11-15T04:46:18.358552+05:30",
-    "condition": "Smoky haze",
-    "kind": "unknown",
-    "source": "wttr.in"
+    "time": "2026-11-15T08:15",
+    "interval": 900,
+    "temperature_2m": 20.3,
+    "weather_code": 3,
+    "is_day": 1,
+    "source": "Open-Meteo"
   }
 }
