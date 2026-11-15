@@ -61,7 +61,7 @@ I learnt Spring Boot on the job, getting comfortable with it by building feature
 ## 🔥 GitHub Contribution Streak
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com/?user=Sahil-Jaiswal-189&theme=tokyonight&hide_border=true" alt="GitHub contribution streak for Sahil-Jaiswal-189" />
+  <img src="assets/github-streak.svg" alt="GitHub contribution streak for Sahil-Jaiswal-189" />
 </p>
 
 <br>
