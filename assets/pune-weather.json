@@ -1,10 +1,10 @@
 {
-  "observed_at": "2026-11-15T08:15:00+05:30",
+  "observed_at": "2026-11-15T16:45:00+05:30",
   "current": {
-    "time": "2026-11-15T08:15",
+    "time": "2026-11-15T16:45",
     "interval": 900,
-    "temperature_2m": 20.3,
-    "weather_code": 3,
+    "temperature_2m": 29.2,
+    "weather_code": 0,
     "is_day": 1,
     "source": "Open-Meteo"
   }
